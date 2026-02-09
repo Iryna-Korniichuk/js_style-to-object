@@ -12,10 +12,11 @@ function convertToObject(sourceString) {
     .filter((line) => line)
     .map((line) => line.split(':'))
     .map(([key, value]) => [key.trim(), value.trim()])
-    .reduce((obj, [key, value]) => {
-      obj[key] = value;
-
-      return obj;
+    .reduce((styleObject, [key, value]) => {
+      return {
+        ...styleObject,
+        [key]: value,
+      };
     }, {});
 }
 
